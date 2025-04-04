@@ -52,7 +52,6 @@ export function Xstate(){
             .then(resp=> {
                 console.log(resp.data);
                 setCities(resp.data);
-                console.log(cities);
                 setSelectedCity("");
             })
             .catch(error => {
