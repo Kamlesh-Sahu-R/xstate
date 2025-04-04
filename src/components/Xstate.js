@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback} from 'react';
 import axios from 'axios';
 import './Xstate.css';
 
@@ -44,7 +44,7 @@ export function Xstate(){
 
     };
 
-    const getCities = async (country, state) => {
+    const getCities = useCallback( async (country, state) => {
 
         const url = `https://crio-location-selector.onrender.com/country=${country}/state=${state}/cities`;
 
@@ -59,7 +59,7 @@ export function Xstate(){
                 console.error("Error in cities API call", error);
             });
 
-    };
+    }, []);
 
     useEffect(() => {getCountries()}, []);
 
@@ -71,7 +71,8 @@ export function Xstate(){
     useEffect(() => {
         if(selectedCountry && selectedState){
             getCities(selectedCountry, selectedState);
-        }}, [selectedCountry, selectedState]);
+        }}, [selectedCountry, selectedState, getCities]);
+        
 
 
     return(
