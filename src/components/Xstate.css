@@ -1,0 +1,16 @@
+.options{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    gap: 20px;
+}
+.option{
+    width: 200px;
+    height: 40px;
+}
+.heighlight{
+    font-size: larger;
+}
+.dull{
+    color: gray;
+}
